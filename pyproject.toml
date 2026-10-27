@@ -16,6 +16,9 @@ pytest-mock = "*"
 pytest-cov = "*"
 pre-commit = "*"
 
+
+[tool.poetry.dependencies]
+numpy = "^2.5.4"
 [tool.pytest.ini_options]
 testpaths = ["tests/unit", "tests/functional"]
 python_files = ["test_*.py"]
