@@ -1,0 +1,46 @@
+[project]
+name = "sudokulib"
+version = "0.1.0"
+description = "A Python library for Sudoku."
+authors = [{ name = "Niccolò Lauriola" }]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.12,<4.0"
+classifiers = ["Programming Language :: Python :: 3.12"]
+
+[tool.poetry.group.dev.dependencies]
+ruff = "*"
+mypy = "*"
+pytest = "*"
+pytest-mock = "*"
+pytest-cov = "*"
+pre-commit = "*"
+
+
+[tool.poetry.dependencies]
+numpy = "^2.5.4"
+[tool.pytest.ini_options]
+testpaths = ["tests/unit", "tests/functional"]
+python_files = ["test_*.py"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+
+[tool.ruff.lint.per-file-ignores]
+# These pytest configuration files must remain empty.
+"tests/unit/conftest.py" = ["CPY001", "D100", "INP001"]
+"tests/functional/conftest.py" = ["CPY001", "D100", "INP001"]
+
+[tool.mypy]
+mypy_path = "src"
+python_version = "3.12"
+strict = true
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
